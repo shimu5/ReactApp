@@ -11,8 +11,13 @@ class App extends Component{
     this.state = {
       dishes: DISHES
     };
+    console.log("Menu Component Constructor invoked")
+  }
+  componentDidMount(){
+    console.log("Menu Component Didmount invoked");
   }
   render() {
+    console.log("Menu Component render invoked")
     return (
       <div className="App">
         <Navbar dark color="primary">
@@ -20,10 +25,9 @@ class App extends Component{
               <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
             </div>
         </Navbar>
-        <Menu dishes={this.state.dishes}></Menu>
+        <Menu dishes={this.state.dishes}> </Menu>
       </div>
     );
  } 
 }
-
 export default App;
