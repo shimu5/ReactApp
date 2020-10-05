@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Main from './components/MainComponent.js';
-
+import { BrowserRouter } from 'react-router-dom';
 
 class App extends Component{
   constructor(props) {
@@ -14,9 +14,11 @@ class App extends Component{
   render() {
     console.log("Menu Component render invoked")
     return (
+      <BrowserRouter>
       <div className="App">
         <Main />
       </div>
+    </BrowserRouter>
     );
  } 
 }
