@@ -3,6 +3,7 @@ import { Navbar, NavbarBrand } from 'reactstrap';
 import { DISHES } from '../shared/dishes';
 import Menu from './MenuComponent.js';
 import Dishdetail from './DishdetailComponent';
+import Child from './Child';
 
 class Main extends Component{
   constructor(props) {
@@ -10,9 +11,12 @@ class Main extends Component{
     this.state = {
       dishes: DISHES,
       selectedDish : null,
+      unit: 'Kg',
     };  
   }
-     
+  ChangeUnit(itemUnit){
+    this.setState({unit:itemUnit})
+  }   
   onDishSelect(dishId) {
     this.setState({ selectedDish: dishId});
   } 
@@ -25,8 +29,14 @@ class Main extends Component{
               <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
             </div>
         </Navbar>
-        <Menu dishes={this.state.dishes}  onClick={(dishId) => this.onDishSelect(dishId)} > </Menu>
+        <Menu dishes={this.state.dishes}  onClick={(dishId) => this.onDishSelect(dishId)} > </Menu> 
         <Dishdetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} />
+        <Child data={
+          {
+            unit:this.state.unit,
+            ChangeUnit:this.ChangeUnit.bind(this)
+          }
+          }></Child>
       </div>
     );
  } 
